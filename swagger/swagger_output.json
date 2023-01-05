@@ -5,10 +5,10 @@
     "title": "Swish API",
     "description": "Documentation for Swish API."
   },
-  "host": "localhost:3000",
+  "host": "swish.herokuapp.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "securityDefinitions": {
     "Bearer": {
