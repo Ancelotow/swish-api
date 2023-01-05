@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --inspect index.mjs",
-    "start": "node .",
+    "start": "node index.mjs",
     "swagger-autogen": "node swagger/swagger.mjs"
   },
   "keywords": [],

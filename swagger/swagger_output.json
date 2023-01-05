@@ -1,0 +1,137 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swish API",
+    "description": "Documentation for Swish API."
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "Rentrez un token valide dans le format **Bearer &lt;token>**"
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "description": "Connexion à un compte livreur.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "person",
+            "in": "body",
+            "description": "Les informations de connection",
+            "schema": {
+              "$ref": "#/definitions/ConnectionInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ConnectionSession"
+            },
+            "description": "Les informations concernant la session de connection"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DeliveryPerson": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "firstname": {
+          "type": "string",
+          "example": "string"
+        },
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "birthday": {
+          "type": "string",
+          "example": "2000-01-01"
+        },
+        "urlPhoto": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "ConnectionSession": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "string"
+        },
+        "deliveryPerson": {
+          "type": "object",
+          "properties": {
+            "uuid": {
+              "type": "string",
+              "example": "00000000-0000-0000-0000-000000000000"
+            },
+            "name": {
+              "type": "string",
+              "example": "string"
+            },
+            "firstname": {
+              "type": "string",
+              "example": "string"
+            },
+            "email": {
+              "type": "string",
+              "example": "string"
+            },
+            "birthday": {
+              "type": "string",
+              "example": "2000-01-01"
+            },
+            "urlPhoto": {
+              "type": "string",
+              "example": "string"
+            }
+          }
+        }
+      }
+    },
+    "ConnectionInfo": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string",
+          "example": "string"
+        },
+        "password": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    }
+  }
+}
