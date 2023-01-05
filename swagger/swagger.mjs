@@ -5,9 +5,9 @@ const doc = {
     info: {
         version: "1.0.0", title: "Swish API", description: "Documentation for Swish API."
     },
-    host: "localhost:3000",
+    host: "swish.herokuapp.com",
     basePath: "/",
-    schemes: ['http'],
+    schemes: ['https'],
     produces: ['application/json'],
     definitions: {
         ...models
