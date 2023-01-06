@@ -6,11 +6,11 @@ const routerLogin = express.Router()
 
 routerLogin.post("/login", async (req, res) => {
     /*
-    swagger.tags = ['Authentification']
+    #swagger.tags = ['Authentification']
     #swagger.description = 'Connexion à un compte livreur.'
     #swagger.produces = ['application/json']
     #swagger.consumes = ['application/json']
-    #swagger.parameters['person'] = {
+    #swagger.parameters['logins'] = {
         in: 'body',
         description: 'Les informations de connection',
         schema: {$ref: '#/definitions/ConnectionInfo'}

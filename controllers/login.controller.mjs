@@ -1,4 +1,4 @@
-import deliveryPersonService from "../services/delevery-person.service.mjs"
+import deliveryPersonService from "../services/delivery-person.service.mjs"
 import jwt from "jsonwebtoken";
 import {Connection} from "../models/connection.mjs";
 import {BadRequestError} from "../models/errors/bad-request-error.mjs";
@@ -10,18 +10,14 @@ const getConnection = async (login, password) => {
     }
     let connectionInfo = new Connection();
     connectionInfo.deliveryPerson = deliveryPerson;
-    connectionInfo.token = GenerateToken(login)
+    connectionInfo.token = GenerateToken(login, deliveryPerson.uuid)
     return connectionInfo
 }
 
 const GenerateToken = (login) => {
-    if(!login) {
-        return null
-    }
     try{
-        return jwt.sign({login: login}, process.env.TOKEN, { expiresIn: "2h" })
+        return jwt.sign({login: login, uuid: uuid}, process.env.TOKEN, { expiresIn: "2h" })
     } catch(e) {
-        console.log(e)
         throw e
     }
 }

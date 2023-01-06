@@ -5,7 +5,15 @@ import {SqlError} from "../models/errors/sql-error.mjs";
 
 const getByLogins = (login, password) => {
     const request = {
-        text: 'select dlp_uuid as uuid, dlp_name as name, dlp_firstname as firstname, dlp_email as email, dlp_birthday as birthday, dlp_url_photo as urlPhoto from delivery_person where dlp_login = $1 and dlp_password = sha256($2)',
+        text: `select dlp_uuid      as uuid,
+                      dlp_name      as name,
+                      dlp_firstname as firstname,
+                      dlp_email     as email,
+                      dlp_birthday  as birthday,
+                      dlp_url_photo as urlPhoto
+               from delivery_person
+               where dlp_login = $1
+                 and dlp_password = sha256($2)`,
         values: [login, password],
     }
     return new Promise((resolve, reject) => {

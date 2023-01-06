@@ -24,6 +24,9 @@
   "paths": {
     "/login": {
       "post": {
+        "tags": [
+          "Authentification"
+        ],
         "description": "Connexion à un compte livreur.",
         "consumes": [
           "application/json"
@@ -33,7 +36,7 @@
         ],
         "parameters": [
           {
-            "name": "person",
+            "name": "logins",
             "in": "body",
             "description": "Les informations de connection",
             "schema": {
@@ -49,6 +52,34 @@
             "description": "Les informations concernant la session de connection"
           }
         }
+      }
+    },
+    "/current-delivery-tour": {
+      "get": {
+        "tags": [
+          "Tour"
+        ],
+        "description": "Récupération de la tournée de livraison du livreur connecté.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Tour"
+            },
+            "description": "La tournée de livraison avec la liste des livraisons à effectuées"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     }
   },
@@ -130,6 +161,59 @@
         "password": {
           "type": "string",
           "example": "string"
+        }
+      }
+    },
+    "Tour": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "0"
+        },
+        "date": {
+          "type": "string",
+          "example": "2000-01-01"
+        },
+        "parcels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "type": "string",
+                "example": "00000000-0000-0000-0000-000000000000"
+              },
+              "addressStreet": {
+                "type": "string",
+                "example": "string"
+              },
+              "town": {
+                "type": "string",
+                "example": "string"
+              },
+              "zipCode": {
+                "type": "string",
+                "example": "string"
+              },
+              "country": {
+                "type": "string",
+                "example": "string"
+              },
+              "isDelivered": {
+                "type": "boolean",
+                "example": true
+              },
+              "dateDelivered": {
+                "type": "string",
+                "example": "2000-01-01"
+              },
+              "urlProofDelivered": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
         }
       }
     }
