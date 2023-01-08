@@ -1,10 +1,9 @@
 import express from "express"
-import {routerLogin} from "./login.route.mjs";
 import tourController from "../controllers/tour.controller.mjs";
 
 const routerTour = express.Router()
 
-routerLogin.get("/current-delivery-tour", async (req, res) => {
+routerTour.get("/current-delivery-tour", async (req, res) => {
     /*
     #swagger.tags = ['Tour']
     #swagger.security = [{ "Bearer": [] }]
@@ -28,3 +27,5 @@ routerLogin.get("/current-delivery-tour", async (req, res) => {
         res.status(statusCode).send(data)
     }
 });
+
+export {routerTour}

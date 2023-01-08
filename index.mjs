@@ -7,6 +7,7 @@ import cors from 'cors'
 import {config} from 'dotenv'
 import morgan from 'morgan'
 import file from 'fs'
+import {routerTour} from "./routes/tour.route.mjs";
 
 const app = express()
 
@@ -29,6 +30,7 @@ app.use(authToken)
 
 // Routers
 app.use(routerLogin)
+app.use(routerTour);
 
 app.listen(port, () => {
     console.log(`Server listen on port ${port}...`)

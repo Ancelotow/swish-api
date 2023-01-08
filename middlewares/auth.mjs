@@ -15,7 +15,7 @@ const authToken = (req, res, next) => {
     }
 
     // Vérifie la présence du header "Authorization"
-    const authHeader = req.headers['Authorization']
+    const authHeader = req.headers['authorization']
     if (!authHeader) return res.sendStatus(401)
 
     // Vérifie la présence du token

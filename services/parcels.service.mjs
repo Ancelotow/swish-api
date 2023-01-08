@@ -26,7 +26,7 @@ const getParcelsByTour = (idTour) => {
 
             let parcels = [];
             if (result.rows != null) {
-                result.rows.forEach(e => Object.assign(new Parcel(), e));
+                result.rows.forEach(e => parcels.push(Object.assign(new Parcel(), e)));
             }
             resolve(parcels)
         });
