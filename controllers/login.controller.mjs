@@ -14,7 +14,7 @@ const getConnection = async (login, password) => {
     return connectionInfo
 }
 
-const GenerateToken = (login) => {
+const GenerateToken = (login, uuid) => {
     try{
         return jwt.sign({login: login, uuid: uuid}, process.env.TOKEN, { expiresIn: "2h" })
     } catch(e) {
